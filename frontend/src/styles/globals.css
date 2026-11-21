@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  /* NASA Mission Palette */
+  --bg-deep: #05070D;
+  --bg-panel: #0B1020;
+  --bg-card: #111832;
+  --bg-hover: #1a2342;
+  --text-primary: #E8EEF9;
+  --text-secondary: #8B97B8;
+  --text-muted: #5A6580;
+
+  /* Sensor Colors */
+  --modis: #4EA8FF;
+  --viirs: #FFB000;
+  --fire-hot: #FF4500;
+  --fire-warm: #FF8C00;
+
+  /* Anomaly Scale */
+  --anomaly-cool: #1E90FF;
+  --anomaly-neutral: #E8EEF9;
+  --anomaly-warm: #FF8C00;
+
+  /* UI */
+  --border: rgba(78, 168, 255, 0.15);
+  --glow: rgba(78, 168, 255, 0.3);
+  --glass: rgba(11, 16, 32, 0.85);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+}
+
+/* Glass Panel */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* Glow effects */
+.glow-border {
+  box-shadow: 0 0 15px rgba(78, 168, 255, 0.1),
+              inset 0 0 15px rgba(78, 168, 255, 0.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Animated counter */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.count-animate {
+  animation: countUp 0.6s ease-out;
+}
+
+/* Section spacing */
+.section {
+  padding: 80px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 48px 16px; }
+}
+
+/* Badge */
+.sensor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+}
+
+.sensor-badge.modis {
+  background: rgba(78, 168, 255, 0.15);
+  color: var(--modis);
+  border: 1px solid rgba(78, 168, 255, 0.3);
+}
+
+.sensor-badge.viirs {
+  background: rgba(255, 176, 0, 0.15);
+  color: var(--viirs);
+  border: 1px solid rgba(255, 176, 0, 0.3);
+}
