@@ -1,0 +1,4 @@
+# GitHub Linguist language overrides
+# Makes Python the primary language of this repository by excluding frontend from language stats
+frontend/** linguist-vendored=true
+*.json linguist-detectable=false
