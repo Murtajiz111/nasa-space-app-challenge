@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: burn-calendar-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: HARMONIZATION_TABLE
+        value: hotspots_harmonized
+      - key: CACHE_TTL_SECONDS
+        value: "600"
