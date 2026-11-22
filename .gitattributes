@@ -1,16 +1,18 @@
 # GitHub Linguist language overrides
-# Exclude frontend UI files from repository language statistics so Python is 100% dominant
-*.ts linguist-detectable=false
-*.tsx linguist-detectable=false
-*.js linguist-detectable=false
-*.mjs linguist-detectable=false
-*.css linguist-detectable=false
-*.html linguist-detectable=false
-*.json linguist-detectable=false
+# Exclude frontend UI and web assets completely from repository language statistics
+*.ts -linguist-detectable
+*.tsx -linguist-detectable
+*.js -linguist-detectable
+*.jsx -linguist-detectable
+*.mjs -linguist-detectable
+*.css -linguist-detectable
+*.html -linguist-detectable
+*.json -linguist-detectable
 
 frontend/** linguist-vendored
-frontend/** linguist-detectable=false
+frontend/** -linguist-detectable
 
-# Explicitly ensure backend and ml Python files are detected
-backend/**/*.py linguist-detectable=true
-ml/**/*.py linguist-detectable=true
+# Ensure Python is actively detected and dominant
+*.py linguist-detectable
+backend/** linguist-detectable
+ml/** linguist-detectable
